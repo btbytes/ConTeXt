@@ -1,12 +1,12 @@
 \unprotect
 
-%%%% Definitions %%%%%
-
+%%%% Definitions %%%%
 \def\doctitle#1{\gdef\@title{#1}}
 \def\author#1{\gdef\@author{#1}}
 \def\date#1{\gdef\@date{#1}}
 \date{\currentdate}  % Default to today unless specified otherwise.
 
+%% title %%
 \def\maketitle{%
   \startalignment[center]
     \blank[force,3*medium]
@@ -18,6 +18,7 @@
     \blank[3*medium]
   \stopalignment}
 
+%% abstract %%
 \definestartstop
   [abstract]
   [before={\midaligned{\bf Abstract}
@@ -25,11 +26,13 @@
    after={\stopnarrower
           \blank[big]}]
 
-%%%%% default setup %%%%%
+%%%% default setup %%%%
 \setuppapersize [letter][letter]
 \setuppagenumbering[location=bottom,middle]
 
+%% fonts %%
 \usemodule[simplefonts]
 \setmainfont[LiberationSerif]
 \switchtobodyfont[12pt]
+
 \protect
