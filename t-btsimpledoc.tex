@@ -9,19 +9,19 @@
 
 \def\maketitle{%
   \startalignment[center]
-    \blank[force,2*big]
-      {\tfd \@title}
-    \blank[3*medium]
+    \blank[force,3*medium]
+      {\tfc \@title}
+    \blank[2*medium]
       {\tfa \@author}
     \blank[2*medium]
-      {\tfa \@date}
+      {\tfx \@date}
     \blank[3*medium]
   \stopalignment}
 
 \definestartstop
   [abstract]
   [before={\midaligned{\bf Abstract}
-           \startnarrower[2*middle]},
+           \startnarrower[1*middle]},
    after={\stopnarrower
           \blank[big]}]
 
