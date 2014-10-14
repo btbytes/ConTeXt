@@ -1,0 +1,35 @@
+\unprotect
+
+%%%% Definitions %%%%%
+
+\def\doctitle#1{\gdef\@title{#1}}
+\def\author#1{\gdef\@author{#1}}
+\def\date#1{\gdef\@date{#1}}
+\date{\currentdate}  % Default to today unless specified otherwise.
+
+\def\maketitle{%
+  \startalignment[center]
+    \blank[force,2*big]
+      {\tfd \@title}
+    \blank[3*medium]
+      {\tfa \@author}
+    \blank[2*medium]
+      {\tfa \@date}
+    \blank[3*medium]
+  \stopalignment}
+
+\definestartstop
+  [abstract]
+  [before={\midaligned{\bf Abstract}
+           \startnarrower[2*middle]},
+   after={\stopnarrower
+          \blank[big]}]
+
+%%%%% default setup %%%%%
+\setuppapersize [letter][letter]
+\setuppagenumbering[location=bottom,middle]
+
+\usemodule[simplefonts]
+\setmainfont[LiberationSerif]
+\switchtobodyfont[12pt]
+\protect
