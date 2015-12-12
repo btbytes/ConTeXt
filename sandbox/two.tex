@@ -1,0 +1,122 @@
+\setuppagenumbering[location={footer, middle}]
+\setupbodyfont[10pt]
+\setuphead
+  [title]
+  [align=center, style=\ss, size=\tfa, color=red, after={\blank[2*big]}]
+
+\setuphead
+  [chapter]
+  [style=\ssc, after={\blank[2*big]}, align=right]
+
+\usemodule[filter]
+
+   \defineexternalfilter
+     [markdown]
+     [filtercommand={pandoc -f \externalfilterparameter{format} -t context
+                     -i \externalfilterinputfile\space
+                     -o \externalfilteroutputfile},
+      format=markdown,
+      directory=output]
+
+\starttext
+
+
+
+\startstandardmakeup
+\startalignment[center] % or \centerline{...}
+    {\definedfont[Bold at 40pt] Title}
+\stopalignment
+\stopstandardmakeup
+
+\setuppagenumbering[conversion=romannumerals,left={--~},right={~--}]
+\startstandardmakeup
+{\tfd  Table of contents}
+\placecontent
+\stopstandardmakeup
+
+\page
+
+\chapter{Introduction}
+\input knuth
+
+\placefigure {Library OS}
+             {\externalfigure [swlayers][width=10cm]}
+\startitemize[n, columns, 5][compact]
+\item Asia
+\item Africa
+\item Australia
+\item Antarctica
+\item Europe
+\item North America
+\item South America
+\item Arctic
+\stopitemize
+
+
+
+\setuppagenumbering[conversion=arabicnumerals,left={--~},right={~--}]
+\startcolumns[n=2,tolerance=verytolerant]
+  Hasselt is an old Hanseatic City, situated 12 ̃km north of Zwolle at
+  the river Zwartewater.
+  The city has a long history since obtaining the city charter around
+  1252. Part and parcel of this history can be traced back to a large
+  number of monuments to be admired in the city center.
+
+There you will find the St. Stephanus church, a late gothic church
+  dating back to 1479 with a magnificent organ. The former Municipal
+  Building is situated on The Market Place. Constituted between 1500
+  and 1550 it houses a large collection of weapons, amongst which one
+  of the largest collection of black powder guns (haakhussen) in the
+  whole world should be mentioned.
+  Furthermore there is a corn windmill ‘The Swallow’, dating back to
+  1748 as well as the ‘Stenendijk’, a unique embankment and the last
+  shell limekiln in Europe still in full operation.
+  The city center with the townmoat adorned by lime-trees, the Van
+  Stolkspark and the hustle and bustle at the docks are ideally suited
+  for a stroll.
+  The area around Hasselt is also worth mentioning. In wintertime
+  polder Mastenbroek harbours large numbers of geese. In summertime the
+  hamlets Genne, Streukel and Celle\-mui\-den form, together with the very
+  rare lapwing flowers (Lat. Fritillaria meleagris) found on the banks
+  of the river Zwatewater, the ideal surroundings for walking or
+  cycling trips.
+  Hasselt also is a very important center for watersports. The lakes of
+  northwest Overijssel, the river IJssel, the Overijsselse Vecht and
+  the Randmeren are within easy reach from the yacht harbour ‘De
+  Molenwaard’. Sailing, fishing, swimming and canoeing can be fully
+  enjoyed in Hasselt.
+  Furthermore some events of special interest should be
+  mentioned. Every year at the end of August Hasselt celebrates the
+  ‘Eui Festival’ (hay festival).
+ \stopcolumns
+
+\starttable[|c|c|]
+\HL
+\NC \bf Year \VL \bf citizens \NC\SR
+\HL
+\NC 1989     \VL 289    \NC\FR
+\NC 1990     \VL 292    \NC\MR
+\NC 1981     \VL 289    \NC\LR
+\HL
+\stoptable
+
+\section{Literature survey}
+
+Some \color[blue]{text} and/or \color[green]{graphics}.
+
+\startmarkdown
+  Hello **world**. A big advantage of a lightweight markup language
+  like markdown is that it is easy to convert it into other
+  markups--html, rtf, epub, etc. For that reason, I key in markdown in
+  a separate file rather in a start-stop environment of a \TeX\ file.
+\stopmarkdown
+
+\blank[3*big]
+
+\startcolumns[n=2]
+
+\processmarkdownfile{software-engineering.md}
+
+\stopcolumns
+
+\stoptext
