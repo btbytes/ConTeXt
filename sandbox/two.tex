@@ -1,5 +1,49 @@
+% Learn \CONTEXT\ by Example
+% ==========================
+%
+% two.tex -- a ConTeXt file to learn various aspects of typesetting.
+% to compile this source file into PDF:
+%       $ context two.tex
+% which will produce two.pdf
+
+% The setuplayout command below sets the physical dimensions of the
+% page.  by default, the margins, headers, footers and backspace are
+% very generous this spacing below are closer to the IEEE Transaction
+% paper; at least visually.
+
+\setuplayout
+  [margin=0.5cm
+  ,backspace=1.5cm
+  ,height=27cm
+  ,width=18cm
+  ,leftmargin=0.5cm
+  ,rightmargin=0.5cm
+  ,footer=0.5cm
+  ,header=0.5cm
+  ,topspace=1.5cm
+  ,bottomspace=1.5cm
+]
+
 \setuppagenumbering[location={footer, middle}]
-\setupbodyfont[10pt]
+
+\starttypescript [palatino]
+\definetypeface [palatino] [rm] [serif] [palatino] [default]
+\definetypeface [palatino] [ss] [sans]  [modern]   [default]
+\definetypeface [palatino] [tt] [mono]  [modern]   [default]
+\definetypeface [palatino] [mm] [math]  [palatino] [default]
+\stoptypescript
+
+\usetypescript[palatino][ec]
+
+\setupbodyfont[palatino,9pt]
+
+\definefontsynonym[chapternumberfont][RegularBold]
+\definefontsynonym[chaptertextfont]  [RegularBold]
+
+\definebodyfont[9pt][rm][bfe=RegularBold at 24pt]
+\definebodyfont[9pt][rm][bft=RegularBold at 54pt]
+
+
 \setuphead
   [title]
   [align=center, style=\ss, size=\tfa, color=red, after={\blank[2*big]}]
@@ -20,11 +64,14 @@
 
 \starttext
 
-
-
 \startstandardmakeup
 \startalignment[center] % or \centerline{...}
-    {\definedfont[Bold at 40pt] Title}
+    {\definedfont[Bold at 40pt] Teaching myself \CONTEXT\ }
+    \blank [3*big]
+    {\bfc Pradeep Gowda}
+\vfill
+\rightaligned{\txx\tt Version: \cldcontext{os.resultof"git rev-parse --short HEAD"}}
+
 \stopalignment
 \stopstandardmakeup
 
@@ -55,6 +102,11 @@
 
 
 \setuppagenumbering[conversion=arabicnumerals,left={--~},right={~--}]
+% \showsetups
+\showlayout
+
+\page
+
 \startcolumns[n=2,tolerance=verytolerant]
   Hasselt is an old Hanseatic City, situated 12 ̃km north of Zwolle at
   the river Zwartewater.
@@ -100,7 +152,7 @@ There you will find the St. Stephanus church, a late gothic church
 \HL
 \stoptable
 
-\section{Literature survey}
+\section{No silver bullets}
 
 Some \color[blue]{text} and/or \color[green]{graphics}.
 
@@ -116,6 +168,24 @@ Some \color[blue]{text} and/or \color[green]{graphics}.
 \startcolumns[n=2]
 
 \processmarkdownfile{software-engineering.md}
+
+\stopcolumns
+
+\blank [3*big]
+
+\setupcolumns[distance=0.1cm, n=2]
+
+\startcolumns
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget purus eget tortor tristique tincidunt. Maecenas vehicula iaculis ante, sit amet bibendum ligula efficitur vitae. In sit amet mollis nisl, sit amet semper quam. Praesent mattis rutrum lacus in pulvinar. Donec scelerisque dignissim erat in ullamcorper. Nam purus leo, fermentum ac facilisis et, volutpat at dolor. Donec luctus nunc molestie diam bibendum, a venenatis est blandit.
+
+Morbi ullamcorper augue auctor velit mattis, nec blandit ante molestie. Sed vel porttitor ante, ut tristique nulla. Nullam ligula leo, suscipit eu turpis quis, tincidunt ornare orci. Nunc eget odio vulputate, hendrerit felis non, cursus tortor. In vitae lorem ut enim finibus scelerisque ut ut lacus. Fusce nec nulla ultrices sapien finibus tincidunt. Vestibulum ut magna ullamcorper, convallis dui nec, maximus tortor. Aenean tincidunt efficitur est, eu placerat massa vulputate ut. Sed sed accumsan arcu, sit amet iaculis lorem. Integer eros magna, laoreet sed tortor at, molestie sagittis ipsum. Quisque mauris urna, molestie mattis iaculis varius, pretium vitae nulla.
+
+Proin imperdiet pellentesque sapien, vel auctor dui imperdiet id. Vestibulum sit amet sem lacus. Nulla facilisi. Aenean quis quam cursus risus euismod posuere. Suspendisse potenti. Proin vitae nibh orci. Suspendisse potenti. Quisque auctor placerat tortor eu maximus. Morbi maximus felis vel tincidunt pellentesque. Quisque lobortis efficitur nibh, quis blandit purus efficitur eget. In ultrices mi est, eget maximus odio placerat id.
+
+Integer vel tincidunt est. Cras aliquet, augue a accumsan sodales, lorem urna ullamcorper arcu, non auctor neque justo ut nulla. Duis accumsan interdum purus, et lobortis erat bibendum ac. Quisque lobortis rhoncus sem, a venenatis tortor euismod ac. Vivamus id dictum eros. Maecenas non sem nulla. Phasellus ultricies erat ac leo finibus, eget malesuada justo laoreet. Vestibulum velit enim, venenatis et ex feugiat, vehicula dictum mi.
+
+Vestibulum sem lacus, feugiat condimentum consectetur in, vestibulum a risus. Donec a velit feugiat, lacinia tortor ut, molestie lacus. Nulla accumsan nisl velit, non fringilla augue facilisis a. Etiam congue leo eget sem feugiat, vitae consectetur erat tempus. Morbi feugiat eros nec massa efficitur porttitor. Morbi ac tellus tempor, eleifend mauris et, lobortis nulla. Integer scelerisque, urna eu sagittis gravida, mauris lacus consequat turpis, a dignissim nisl ipsum vel magna. Vestibulum augue quam, tincidunt et porttitor eget, finibus vitae ante. Etiam risus dui, fermentum a aliquet eget, tristique vel nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla sed finibus erat. Maecenas lobortis libero vitae vestibulum convallis. Mauris feugiat eget nibh ut malesuada. Vestibulum cursus elit ut varius tristique. Suspendisse porttitor, leo pretium sollicitudin pretium, metus dui suscipit est, eu condimentum felis est in lectus.
 
 \stopcolumns
 
